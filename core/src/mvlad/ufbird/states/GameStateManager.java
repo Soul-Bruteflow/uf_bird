@@ -1,4 +1,4 @@
-package mvlad.ufbird.States;
+package mvlad.ufbird.states;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import java.util.Stack;
