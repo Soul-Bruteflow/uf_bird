@@ -51,7 +51,7 @@ public class Pipe {
         posTopPipe.set(x, rand.nextInt(FLUCTUATION) + PIPE_GAP + LOWEST_OPENING);
         posBotPipe.set(x, posTopPipe.y - PIPE_GAP - bottomPipe.getHeight());
         boundsTop.setPosition(posTopPipe.x, posTopPipe.y);
-        boundsBot.setPosition(posTopPipe.x, posTopPipe.y);
+        boundsBot.setPosition(posBotPipe.x, posBotPipe.y);
     }
 
     public boolean collides(Rectangle player){
