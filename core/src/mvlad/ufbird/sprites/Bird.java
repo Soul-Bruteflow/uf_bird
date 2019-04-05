@@ -1,6 +1,7 @@
 package mvlad.ufbird.sprites;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector3;
 
@@ -11,17 +12,20 @@ public class Bird {
     private static final int MOVEMENT = 100;
     private Vector3 position;
     private Vector3 velocity;
-    private Texture birdDefault;
+    private Texture bird;
     private Rectangle bounds;
+    private Animation birdAnimation;
 
     public Bird(int x, int y){
         position = new Vector3(x, y, 0);
         velocity = new Vector3(0, 0, 0);
-        birdDefault = new Texture("sprites/redbird-upflap.png");
-        bounds = new Rectangle(x, y, birdDefault.getWidth(), birdDefault.getHeight());
+        bird = new Texture("sprites/birdAnimation.png");
+        birdAnimation = new Animation(new TextureRegion(bird), 3, 0.5f);
+        bounds = new Rectangle(x, y, bird.getWidth() / 3.0f, bird.getHeight());
     }
 
     public void update(float deltaTime){
+        birdAnimation.update(deltaTime);
         if (position.y > 0)
             velocity.add(0, GRAVITY, 0);
         velocity.scl(deltaTime);
@@ -41,8 +45,8 @@ public class Bird {
         return position;
     }
 
-    public Texture getTexture() {
-        return birdDefault;
+    public TextureRegion getTexture() {
+        return birdAnimation.getFrame();
     }
 
     public void jump(){
@@ -50,6 +54,6 @@ public class Bird {
     }
 
     public void dispose(){
-        birdDefault.dispose();
+        bird.dispose();
     }
 }
