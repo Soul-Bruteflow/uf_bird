@@ -31,7 +31,6 @@ public class BirdModel extends Model {
 
     public void jump(){
         velocity.y = 250;
-        //wing.play(0.5f);
     }
 
     public Rectangle getBounds(){

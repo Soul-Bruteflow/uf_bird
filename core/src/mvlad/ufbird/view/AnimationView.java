@@ -35,7 +35,4 @@ public class AnimationView {
     public TextureRegion getFrame(){
         return frames.get(frame);
     }
-
-    public void dispose(){
-    }
 }

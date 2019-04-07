@@ -18,6 +18,7 @@ public class PipeModel extends Model {
     private Random rand;
     private Rectangle boundsTop;
     private Rectangle boundsBot;
+    private Rectangle boundsCenter;
 
     public PipeModel(float x, Vector2 botPipeSize, Vector2 topPipeSize){
         rand = new Random();
@@ -25,8 +26,9 @@ public class PipeModel extends Model {
         posTopPipe = new Vector2(x, rand.nextInt(FLUCTUATION) + PIPE_GAP + LOWEST_OPENING);
         posBotPipe = new Vector2(x, posTopPipe.y - PIPE_GAP - botPipeSize.y);
 
-        boundsTop = new Rectangle(posTopPipe.x, posTopPipe.y, topPipeSize.x, topPipeSize.y);
-        boundsBot = new Rectangle(posBotPipe.x, posBotPipe.y, botPipeSize.x, botPipeSize.y);
+        boundsTop = new Rectangle(x, posTopPipe.y, topPipeSize.x, topPipeSize.y);
+        boundsBot = new Rectangle(x, posBotPipe.y, botPipeSize.x, botPipeSize.y);
+        boundsCenter = new Rectangle(x, posBotPipe.y, 1, 800);
     }
 
     public Vector2 getPosTopPipe() {
@@ -40,11 +42,22 @@ public class PipeModel extends Model {
     public void reposition(float x,  float botPipeHeight){
         posTopPipe.set(x, rand.nextInt(FLUCTUATION) + PIPE_GAP + LOWEST_OPENING);
         posBotPipe.set(x, posTopPipe.y - PIPE_GAP - botPipeHeight);
-        boundsTop.setPosition(posTopPipe.x, posTopPipe.y);
-        boundsBot.setPosition(posBotPipe.x, posBotPipe.y);
+        boundsTop.setPosition(x, posTopPipe.y);
+        boundsBot.setPosition(x, posBotPipe.y);
+        boundsCenter.setPosition(x, posBotPipe.y);
     }
 
     public boolean collides(Rectangle player){
         return player.overlaps(boundsTop) || player.overlaps(boundsBot);
+    }
+
+    public boolean crossPipe(Rectangle player){
+
+        boolean tmp;
+        tmp = player.overlaps(boundsCenter);
+        if (tmp)
+            boundsCenter.setPosition(400, 800);
+
+        return tmp;
     }
 }

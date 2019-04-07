@@ -82,6 +82,10 @@ public class PlayController extends Controller {
             if (pipe.collides(birdModel.getBounds())){
                 csm.set(new PlayController(csm));
             }
+
+            if (pipe.crossPipe(birdModel.getBounds())){
+                System.out.println("cross.");
+            }
         }
         if(birdModel.getPosition().y <= groundView.getGroundTexture().getHeight() + groundModel.getGroundYOffset())
             csm.set(new PlayController(csm));
