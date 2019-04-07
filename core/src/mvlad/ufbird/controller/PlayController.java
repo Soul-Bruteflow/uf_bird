@@ -20,13 +20,15 @@ public class PlayController extends Controller {
     private static final int PIPE_SPACING = 125;
     private static final int PIPE_COUNT = 4;
     public static final int PIPE_WIDTH = 52;
-    private BirdModel birdModel;
+
     private BirdView birdView;
     private BackgroundView backgroundView;
-    private BackgroundModel backgroundModel;
     private PipeView pipeView;
-    private Array<PipeModel> pipesModel;
     private GroundView groundView;
+
+    private BackgroundModel backgroundModel;
+    private BirdModel birdModel;
+    private Array<PipeModel> pipesModel;
     private GroundModel groundModel;
 
     public  PlayController(GameControllerManager csm) {
@@ -55,8 +57,10 @@ public class PlayController extends Controller {
 
     @Override
     protected void handleInput() {
-        if (Gdx.input.justTouched())
+        if (Gdx.input.justTouched()) {
             birdModel.jump();
+            birdView.playWingSound();
+        }
     }
 
     @Override
@@ -99,6 +103,9 @@ public class PlayController extends Controller {
 
     @Override
     public void dispose() {
-
+        pipeView.dispose();
+        backgroundView.disposeBackground();
+        birdView.dispose();
+        groundView.dispose();
     }
 }

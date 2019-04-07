@@ -28,7 +28,7 @@ public class PipeView {
         return bottomPipe;
     }
 
-        public void dispose(){
+    public void dispose(){
         topPipe.dispose();
         bottomPipe.dispose();
     }

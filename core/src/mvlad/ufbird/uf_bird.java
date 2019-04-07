@@ -10,6 +10,7 @@ import javax.xml.soap.Text;
 
 import mvlad.ufbird.controller.GameControllerManager;
 import mvlad.ufbird.controller.MainMenuController;
+import mvlad.ufbird.view.MainMusic;
 
 public class uf_bird extends ApplicationAdapter {
 
@@ -18,7 +19,7 @@ public class uf_bird extends ApplicationAdapter {
 	public static final String TITLE = "uf_bird";
 	private GameControllerManager csm;
 	private SpriteBatch spriteBatch;
-	//private Music music;
+	private MainMusic musicTheme;
 
 	private Texture tmp;
 
@@ -26,10 +27,7 @@ public class uf_bird extends ApplicationAdapter {
 	public void create() {
 		spriteBatch = new SpriteBatch();
 		csm = new GameControllerManager();
-		//music = Gdx.audio.newMusic(Gdx.files.internal("audio/mainTheme.mp3"));
-		//music.setLooping(true);
-		//music.setVolume(0.1f);
-		//music.play();
+		musicTheme = new MainMusic();
 		Gdx.gl.glClearColor(0, 0.2f, 0, 1);
 		csm.push(new MainMenuController(csm));
 	}

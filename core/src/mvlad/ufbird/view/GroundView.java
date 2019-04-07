@@ -22,4 +22,9 @@ public class GroundView {
     public Texture getGroundTexture() {
         return ground;
     }
+
+    public void dispose() {
+        ground.dispose();
+        System.out.println("Ground disposed.");
+    }
 }
