@@ -76,10 +76,6 @@ public class MainMenuView {
         return playBtn;
     }
 
-    public Texture getFooter() {
-        return background;
-    }
-
     public Texture getTitle() {
         return title;
     }

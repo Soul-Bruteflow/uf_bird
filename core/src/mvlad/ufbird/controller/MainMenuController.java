@@ -36,8 +36,7 @@ public class MainMenuController extends Controller {
     @Override
     public void handleInput() {
         if (Gdx.input.justTouched()){
-            System.out.println("Touch Event");
-            //csm.set(new PlayController(csm));
+            csm.set(new PlayController(csm));
         }
     }
 

@@ -9,16 +9,6 @@ public class MainMenuModel extends Model {
     public MainMenuModel(){
     }
 
-    public Vector2 setCamSize(){
-
-        Vector2 ret = new Vector2(0, 0);
-
-        ret.x = WIDTH / 2.0f;
-        ret.y = HEIGHT / 2.0f;
-
-        return (ret);
-    }
-
     public Vector2 setPlayBtnPos(OrthographicCamera cam, Texture texture){
 
         Vector2 ret = new Vector2(0, 0);
