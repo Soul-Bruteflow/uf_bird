@@ -6,9 +6,11 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
 import mvlad.ufbird.model.BirdModel;
+import mvlad.ufbird.model.GroundModel;
 import mvlad.ufbird.model.PipeModel;
 import mvlad.ufbird.view.BackgroundView;
 import mvlad.ufbird.view.BirdView;
+import mvlad.ufbird.view.GroundView;
 import mvlad.ufbird.view.PipeView;
 
 public class PlayController extends Controller {
@@ -16,14 +18,14 @@ public class PlayController extends Controller {
 
     private static final int PIPE_SPACING = 125;
     private static final int PIPE_COUNT = 4;
-    private static final int GROUND_Y_OFFSET = -50;
     public static final int PIPE_WIDTH = 52;
     private BirdModel birdModel;
     private BirdView birdView;
     private BackgroundView backgroundView;
-
     private PipeView pipeView;
     private Array<PipeModel> pipesModel;
+    private GroundView groundView;
+    private GroundModel groundModel;
 
     public  PlayController(GameControllerManager csm) {
         super(csm);
@@ -36,6 +38,8 @@ public class PlayController extends Controller {
 
         pipeView = new PipeView();
         pipesModel = new Array<PipeModel>();
+        groundView = new GroundView();
+        groundModel = new GroundModel(cam, groundView.getGroundTexture().getWidth());
 
         for(int i = 1; i <= PIPE_COUNT; i++) {
             pipesModel.add(new PipeModel(i * (PIPE_SPACING + PIPE_WIDTH),
@@ -57,6 +61,7 @@ public class PlayController extends Controller {
         birdModel.updatePos(deltaTime);
         birdView.updateBirdAnimation(deltaTime);
         cam.position.x = birdModel.getPosition().x + 80;
+        groundModel.updateGround(cam, groundView.getGroundTexture().getWidth());
 
         for (int i = 0; i < pipesModel.size; i++) {
             PipeModel pipe = pipesModel.get(i);
@@ -69,8 +74,8 @@ public class PlayController extends Controller {
                 csm.set(new PlayController(csm));
             }
         }
-        //if(birdModel.getPosition().y <= ground.getHeight() + GROUND_Y_OFFSET)
-        //    gsm.set(new PlayState(gsm));
+        if(birdModel.getPosition().y <= groundView.getGroundTexture().getHeight() + groundModel.getGroundYOffset())
+            csm.set(new PlayController(csm));
 
         cam.update();
     }
@@ -84,6 +89,7 @@ public class PlayController extends Controller {
         for (PipeModel pipe : pipesModel){
             pipeView.render(sb, pipe.getPosBotPipe(), pipe.getPosTopPipe());
         }
+        groundView.render(sb, groundModel.getGroundPos1(), groundModel.getGroundPos2());
     }
 
     @Override
