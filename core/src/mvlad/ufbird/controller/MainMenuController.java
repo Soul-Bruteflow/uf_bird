@@ -7,18 +7,6 @@ import com.badlogic.gdx.math.Vector2;
 import mvlad.ufbird.model.MainMenuModel;
 import mvlad.ufbird.view.MainMenuView;
 
-//public class MenuState extends State{
-//
-//    private Texture backgroundDay;
-//    private Texture playBtn;
-//
-//    public MenuState(GameStateManager gsm) {
-//        super(gsm);
-//        cam.setToOrtho(false, (float)uf_bird.WIDTH / 2, (float)uf_bird.HEIGHT / 2);
-//        backgroundDay = new Texture("sprites/bckgrnd_day.png");
-//        playBtn = new Texture("sprites/btn_play.png");
-//    }
-
 public class MainMenuController extends Controller {
 
     private MainMenuModel menuModel;

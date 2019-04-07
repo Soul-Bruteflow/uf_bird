@@ -7,7 +7,7 @@ import mvlad.ufbird.uf_bird;
 public class PlayModel extends Model {
 
 
-    private static final int MOVEMENT = 100;
+    private static final int MOVEMENT = 90;
     private int currentScore;
     private Vector2 position;
 
@@ -39,5 +39,6 @@ public class PlayModel extends Model {
                 break;
             }
         }
+        uf_bird.currentScore = currentScore;
     }
 }

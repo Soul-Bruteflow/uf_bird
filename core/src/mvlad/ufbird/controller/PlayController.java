@@ -10,6 +10,7 @@ import mvlad.ufbird.model.BirdModel;
 import mvlad.ufbird.model.GroundModel;
 import mvlad.ufbird.model.PipeModel;
 import mvlad.ufbird.model.PlayModel;
+import mvlad.ufbird.uf_bird;
 import mvlad.ufbird.view.BackgroundView;
 import mvlad.ufbird.view.BirdView;
 import mvlad.ufbird.view.GroundView;
@@ -39,7 +40,7 @@ public class PlayController extends Controller {
         super(csm);
         birdView = new BirdView();
         backgroundView = new BackgroundView();
-        birdModel = new BirdModel(50, 400, birdView.getBird().getWidth(), birdView.getBird().getHeight());
+        birdModel = new BirdModel(50, 350, birdView.getBird().getWidth(), birdView.getBird().getHeight());
 
         Vector2 camSize = new Vector2(birdModel.setCamSize());
         cam.setToOrtho(false, camSize.x, camSize.y);
@@ -88,16 +89,22 @@ public class PlayController extends Controller {
             }
 
             if (pipe.collides(birdModel.getBounds())){
-                csm.set(new PlayController(csm));
+                playModel.sotoreCurrentScore(5);
+                csm.set(new GameOverController(csm));
             }
 
             if (pipe.crossPipe(birdModel.getBounds())){
                 playModel.incrementScore();
-                //System.out.println("cross.");
             }
         }
-        if(birdModel.getPosition().y <= groundView.getGroundTexture().getHeight() + groundModel.getGroundYOffset())
-            csm.set(new PlayController(csm));
+        if(birdModel.getPosition().y <= groundView.getGroundTexture().getHeight() + groundModel.getGroundYOffset()){
+            playModel.sotoreCurrentScore(5);
+            csm.set(new GameOverController(csm));
+        }
+        if(birdModel.getPosition().y >= 390){
+            playModel.sotoreCurrentScore(5);
+            csm.set(new GameOverController(csm));
+        }
 
         cam.update();
     }

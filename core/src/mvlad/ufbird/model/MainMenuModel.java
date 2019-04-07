@@ -4,9 +4,12 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 
+import mvlad.ufbird.uf_bird;
+
 public class MainMenuModel extends Model {
 
     public MainMenuModel(){
+        uf_bird.currentScore = 0;
     }
 
     public Vector2 setPlayBtnPos(OrthographicCamera cam, Texture texture){
