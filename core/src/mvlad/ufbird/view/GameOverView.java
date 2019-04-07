@@ -43,7 +43,7 @@ public class GameOverView {
 
     public GameOverView(){
         font = new BitmapFont(Gdx.files.internal("fonts/mainFont.fnt"));
-        font.getData().setScale(1);
+        //font.getData().setScale(1);
         font.setUseIntegerPositions(false);
         font.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         background = new Texture("sprites/bckgrnd_night.png");
@@ -98,7 +98,8 @@ public class GameOverView {
     public void renderTopScoreValue(SpriteBatch sb, Vector2 pos){
         sb.begin();
         for (int i = 0; i < 3; i++) {
-            font.draw(sb, Integer.toString(i) + ". " + Integer.toString(uf_bird.topScore[i]), pos.x, pos.y - (i + 1) * 15);
+            font.draw(sb, Integer.toString(i) + ". ", pos.x, pos.y - (i + 1) * 35);
+            font.draw(sb, Integer.toString(uf_bird.topScore[i]), pos.x + 35, pos.y - (i + 1) * 35);
         }
         sb.end();
     }

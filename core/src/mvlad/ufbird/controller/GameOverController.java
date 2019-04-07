@@ -3,6 +3,7 @@ package mvlad.ufbird.controller;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 
 import mvlad.ufbird.model.GameOverModel;
 import mvlad.ufbird.uf_bird;
@@ -11,6 +12,7 @@ import mvlad.ufbird.view.GameOverView;
 public class GameOverController extends Controller {
     private GameOverModel gameOverModel;
     private GameOverView gameOverView;
+    private Vector3 touchPos;
 
     public  GameOverController(GameControllerManager csm) {
         super(csm);
@@ -19,12 +21,20 @@ public class GameOverController extends Controller {
 
         Vector2 camSize = new Vector2(gameOverModel.setCamSize());
         cam.setToOrtho(false, camSize.x, camSize.y);
+        touchPos = new Vector3();
     }
 
     @Override
     public void handleInput() {
         if (Gdx.input.justTouched()){
-            csm.set(new MainMenuController(csm));
+            touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
+            cam.unproject(touchPos);
+            Vector2 tmp = gameOverModel.setOkBtnPos(cam, gameOverView.getOkBtn());
+            if (touchPos.x > tmp.x && touchPos.x < tmp.x + gameOverView.getOkBtn().getWidth()) {
+                if (touchPos.y > tmp.y && touchPos.y < tmp.y + gameOverView.getOkBtn().getHeight()) {
+                    csm.set(new MainMenuController(csm));
+                }
+            }
         }
     }
 
@@ -37,9 +47,7 @@ public class GameOverController extends Controller {
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(cam.combined);
         gameOverView.renderBackground(sb, gameOverModel.setBackgroundSize());
-        gameOverView.renderScoreBackground(sb, gameOverModel.setScoreBackgroundPos(cam, gameOverView.getScoreBackground()));
         gameOverView.renderTitle(sb, gameOverModel.setTitlePos(cam, gameOverView.getTitle()));
-
         gameOverView.renderOkBtn(sb, gameOverModel.setOkBtnPos(cam, gameOverView.getOkBtn()));
         gameOverView.renderScoreBtn(sb, gameOverModel.setScoreBtnPos(cam, gameOverView.getScoreBtn()));
         gameOverView.renderCurScore(sb, uf_bird.currentScore, gameOverModel.setCurScorePos(cam, gameOverView.getFont()));

@@ -24,7 +24,7 @@ public class GameOverModel extends Model {
         Vector2 ret = new Vector2(0, 0);
 
         ret.x = cam.position.x - texture.getWidth() / 2.0f;
-        ret.y = cam.position.y;
+        ret.y = cam.position.y - 30;
 
         return (ret);
     }
@@ -32,8 +32,8 @@ public class GameOverModel extends Model {
     public Vector2 setOkBtnPos(OrthographicCamera cam, Texture texture){
         Vector2 ret = new Vector2(0, 0);
 
-        ret.x = cam.position.x - texture.getWidth() / 2.0f;
-        ret.y = cam.position.y;
+        ret.x = (cam.position.x - texture.getWidth() / 2.0f) - 40;
+        ret.y = cam.position.y - 110;
 
         return (ret);
     }
@@ -41,8 +41,8 @@ public class GameOverModel extends Model {
     public Vector2 setScoreBtnPos(OrthographicCamera cam, Texture texture){
         Vector2 ret = new Vector2(0, 0);
 
-        ret.x = cam.position.x - texture.getWidth() / 2.0f;
-        ret.y = cam.position.y;
+        ret.x = (cam.position.x - texture.getWidth() / 2.0f) + 40;
+        ret.y = cam.position.y - 117;
 
         return (ret);
     }
@@ -51,7 +51,7 @@ public class GameOverModel extends Model {
         Vector2 ret = new Vector2(0, 0);
 
         ret.x = cam.position.x - texture.getWidth() / 2.0f;
-        ret.y = cam.position.y;
+        ret.y = cam.position.y + 120;
 
         return (ret);
     }
@@ -59,8 +59,8 @@ public class GameOverModel extends Model {
     public Vector2 setCurScorePos(OrthographicCamera cam, BitmapFont font){
         Vector2 ret = new Vector2(0, 0);
 
-        ret.x = cam.position.x - font.getRegion().getRegionWidth() / 2.0f;
-        ret.y = cam.position.y;
+        ret.x = (cam.position.x - font.getRegion().getRegionWidth() / 2.0f) + 160;
+        ret.y = cam.position.y + 90;
 
         return (ret);
     }
@@ -68,8 +68,8 @@ public class GameOverModel extends Model {
     public Vector2 setTopScorePos(OrthographicCamera cam, BitmapFont font){
         Vector2 ret = new Vector2(0, 0);
 
-        ret.x = cam.position.x - font.getRegion().getRegionWidth() / 2.0f;
-        ret.y = cam.position.y;
+        ret.x = (cam.position.x - font.getRegion().getRegionWidth() / 2.0f) + 200;
+        ret.y = cam.position.y + 40;
 
         return (ret);
     }
@@ -77,8 +77,8 @@ public class GameOverModel extends Model {
     public Vector2 setTopScoreValuePos(OrthographicCamera cam, BitmapFont font){
         Vector2 ret = new Vector2(0, 0);
 
-        ret.x = cam.position.x - font.getRegion().getRegionWidth() / 2.0f;
-        ret.y = cam.position.y;
+        ret.x = (cam.position.x - font.getRegion().getRegionWidth() / 2.0f) + 230;
+        ret.y = cam.position.y + 50;
 
         return (ret);
     }
