@@ -35,6 +35,9 @@ public class PlayModel extends Model {
     public void sotoreCurrentScore(int scoreSlots){
         for (int i = 0; i < scoreSlots; i++){
             if (currentScore > uf_bird.topScore[i]){
+                for (int j = (scoreSlots - 1); j > i; j--){
+                    uf_bird.topScore[j] = uf_bird.topScore[j - 1];
+                }
                 uf_bird.topScore[i] = currentScore;
                 break;
             }

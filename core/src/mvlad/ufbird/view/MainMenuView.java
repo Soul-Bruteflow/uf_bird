@@ -12,12 +12,14 @@ public class MainMenuView {
     private Texture background;
     private Texture title;
     private Texture footer;
+    //private Texture skinBtn;
 
     public MainMenuView(){
         playBtn = new Texture("sprites/btn_play.png");
         background = new Texture("sprites/bckgrnd_day.png");
         title = new Texture("sprites/title.png");
         footer = new Texture("sprites/footer.png");
+        //skinBtn = new Texture("sprites/skinBt.png");
     }
 
     // Main Menu — Play button
