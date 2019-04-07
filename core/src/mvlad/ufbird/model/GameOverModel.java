@@ -38,6 +38,15 @@ public class GameOverModel extends Model {
         return (ret);
     }
 
+    public Vector2 setOkBtnPosLong(OrthographicCamera cam, Texture texture){
+        Vector2 ret = new Vector2(0, 0);
+
+        ret.x = (cam.position.x - texture.getWidth() / 2.0f);
+        ret.y = cam.position.y - 140;
+
+        return (ret);
+    }
+
     public Vector2 setScoreBtnPos(OrthographicCamera cam, Texture texture){
         Vector2 ret = new Vector2(0, 0);
 
@@ -74,11 +83,29 @@ public class GameOverModel extends Model {
         return (ret);
     }
 
+    public Vector2 setTopScorePosLong(OrthographicCamera cam, BitmapFont font){
+        Vector2 ret = new Vector2(0, 0);
+
+        ret.x = (cam.position.x - font.getRegion().getRegionWidth() / 2.0f) + 200;
+        ret.y = cam.position.y + 170;
+
+        return (ret);
+    }
+
     public Vector2 setTopScoreValuePos(OrthographicCamera cam, BitmapFont font){
         Vector2 ret = new Vector2(0, 0);
 
         ret.x = (cam.position.x - font.getRegion().getRegionWidth() / 2.0f) + 230;
         ret.y = cam.position.y + 50;
+
+        return (ret);
+    }
+
+    public Vector2 setTopScoreValuePosLong(OrthographicCamera cam, BitmapFont font){
+        Vector2 ret = new Vector2(0, 0);
+
+        ret.x = (cam.position.x - font.getRegion().getRegionWidth() / 2.0f) + 230;
+        ret.y = cam.position.y + 160;
 
         return (ret);
     }

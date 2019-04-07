@@ -22,7 +22,7 @@ public class uf_bird extends ApplicationAdapter {
 
 	@Override
 	public void create() {
-		topScore = new int[] { 0, 0, 0, 0, 0 };
+		topScore = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 		currentScore = 0;
 		spriteBatch = new SpriteBatch();
 		csm = new GameControllerManager();

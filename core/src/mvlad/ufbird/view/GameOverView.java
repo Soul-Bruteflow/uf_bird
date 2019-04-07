@@ -103,4 +103,13 @@ public class GameOverView {
         }
         sb.end();
     }
+
+    public void renderTopScoreValueLong(SpriteBatch sb, Vector2 pos){
+        sb.begin();
+        for (int i = 0; i < 10; i++) {
+            font.draw(sb, Integer.toString(i) + ". ", pos.x, pos.y - (i + 1) * 25);
+            font.draw(sb, Integer.toString(uf_bird.topScore[i]), pos.x + 35, pos.y - (i + 1) * 25);
+        }
+        sb.end();
+    }
 }

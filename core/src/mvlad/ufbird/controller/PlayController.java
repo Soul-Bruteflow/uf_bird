@@ -89,7 +89,7 @@ public class PlayController extends Controller {
             }
 
             if (pipe.collides(birdModel.getBounds())){
-                playModel.sotoreCurrentScore(5);
+                playModel.sotoreCurrentScore(10);
                 csm.set(new GameOverController(csm));
             }
 

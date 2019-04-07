@@ -9,12 +9,12 @@ import mvlad.ufbird.model.GameOverModel;
 import mvlad.ufbird.uf_bird;
 import mvlad.ufbird.view.GameOverView;
 
-public class GameOverController extends Controller {
+public class TopScoreController extends Controller {
     private GameOverModel gameOverModel;
     private GameOverView gameOverView;
     private Vector3 touchPos;
 
-    public  GameOverController(GameControllerManager csm) {
+    public  TopScoreController(GameControllerManager csm) {
         super(csm);
         this.gameOverModel = new GameOverModel();
         this.gameOverView = new GameOverView();
@@ -29,16 +29,10 @@ public class GameOverController extends Controller {
         if (Gdx.input.justTouched()){
             touchPos.set(Gdx.input.getX(), Gdx.input.getY(), 0);
             cam.unproject(touchPos);
-            Vector2 tmp = gameOverModel.setOkBtnPos(cam, gameOverView.getOkBtn());
+            Vector2 tmp = gameOverModel.setOkBtnPosLong(cam, gameOverView.getOkBtn());
             if (touchPos.x > tmp.x && touchPos.x < tmp.x + gameOverView.getOkBtn().getWidth()) {
                 if (touchPos.y > tmp.y && touchPos.y < tmp.y + gameOverView.getOkBtn().getHeight()) {
-                    csm.set(new MainMenuController(csm));
-                }
-            }
-            tmp = gameOverModel.setScoreBtnPos(cam, gameOverView.getScoreBtn());
-            if (touchPos.x > tmp.x && touchPos.x < tmp.x + gameOverView.getScoreBtn().getWidth()) {
-                if (touchPos.y > tmp.y && touchPos.y < tmp.y + gameOverView.getScoreBtn().getHeight()) {
-                    csm.set(new TopScoreController(csm));
+                    csm.set(new GameOverController(csm));
                 }
             }
         }
@@ -53,12 +47,12 @@ public class GameOverController extends Controller {
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(cam.combined);
         gameOverView.renderBackground(sb, gameOverModel.setBackgroundSize());
-        gameOverView.renderTitle(sb, gameOverModel.setTitlePos(cam, gameOverView.getTitle()));
-        gameOverView.renderOkBtn(sb, gameOverModel.setOkBtnPos(cam, gameOverView.getOkBtn()));
-        gameOverView.renderScoreBtn(sb, gameOverModel.setScoreBtnPos(cam, gameOverView.getScoreBtn()));
-        gameOverView.renderCurScore(sb, uf_bird.currentScore, gameOverModel.setCurScorePos(cam, gameOverView.getFont()));
-        gameOverView.renderTopScore(sb, gameOverModel.setTopScorePos(cam, gameOverView.getFont()));
-        gameOverView.renderTopScoreValue(sb, gameOverModel.setTopScoreValuePos(cam, gameOverView.getFont()));
+        //gameOverView.renderTitle(sb, gameOverModel.setTitlePos(cam, gameOverView.getTitle()));
+        gameOverView.renderOkBtn(sb, gameOverModel.setOkBtnPosLong(cam, gameOverView.getOkBtn()));
+        //gameOverView.renderScoreBtn(sb, gameOverModel.setScoreBtnPos(cam, gameOverView.getScoreBtn()));
+        //gameOverView.renderCurScore(sb, uf_bird.currentScore, gameOverModel.setCurScorePos(cam, gameOverView.getFont()));
+        gameOverView.renderTopScore(sb, gameOverModel.setTopScorePosLong(cam, gameOverView.getFont()));
+        gameOverView.renderTopScoreValueLong(sb, gameOverModel.setTopScoreValuePosLong(cam, gameOverView.getFont()));
     }
 
     @Override
