@@ -19,9 +19,10 @@ public class BackgroundView {
     }
 
     // Main Menu — Background
-    public void renderBackground(SpriteBatch sb, Vector2 position) {
+    public void render(SpriteBatch sb, Vector2 groundPos1, Vector2 groundPos2){
         sb.begin();
-        sb.draw(background, position.x, position.y, uf_bird.WIDTH, uf_bird.HEIGHT);
+        sb.draw(background, groundPos1.x, groundPos1.y);
+        sb.draw(background, groundPos2.x, groundPos2.y);
         sb.end();
     }
 

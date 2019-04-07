@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
+import mvlad.ufbird.model.BackgroundModel;
 import mvlad.ufbird.model.BirdModel;
 import mvlad.ufbird.model.GroundModel;
 import mvlad.ufbird.model.PipeModel;
@@ -22,6 +23,7 @@ public class PlayController extends Controller {
     private BirdModel birdModel;
     private BirdView birdView;
     private BackgroundView backgroundView;
+    private BackgroundModel backgroundModel;
     private PipeView pipeView;
     private Array<PipeModel> pipesModel;
     private GroundView groundView;
@@ -40,6 +42,8 @@ public class PlayController extends Controller {
         pipesModel = new Array<PipeModel>();
         groundView = new GroundView();
         groundModel = new GroundModel(cam, groundView.getGroundTexture().getWidth());
+        backgroundView = new BackgroundView();
+        backgroundModel = new BackgroundModel(cam, backgroundView.getBackground().getWidth());
 
         for(int i = 1; i <= PIPE_COUNT; i++) {
             pipesModel.add(new PipeModel(i * (PIPE_SPACING + PIPE_WIDTH),
@@ -62,6 +66,7 @@ public class PlayController extends Controller {
         birdView.updateBirdAnimation(deltaTime);
         cam.position.x = birdModel.getPosition().x + 80;
         groundModel.updateGround(cam, groundView.getGroundTexture().getWidth());
+        backgroundModel.updateBackground(cam, backgroundView.getBackground().getWidth());
 
         for (int i = 0; i < pipesModel.size; i++) {
             PipeModel pipe = pipesModel.get(i);
@@ -83,7 +88,7 @@ public class PlayController extends Controller {
     @Override
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(cam.combined);
-        backgroundView.renderBackground(sb, new Vector2(cam.position.x - (cam.viewportWidth / 2), 0));
+        backgroundView.render(sb, backgroundModel.getBackGroundPos1(), backgroundModel.getBackGroundPos2());
         birdView.renderBird(sb, birdModel.getPosition().x, birdModel.getPosition().y);
 
         for (PipeModel pipe : pipesModel){
