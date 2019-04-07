@@ -12,4 +12,8 @@ public class MainMusic {
         music.setVolume(0.1f);
         music.play();
     }
+
+    public void dispose(){
+        music.dispose();
+    }
 }

@@ -3,6 +3,8 @@ package mvlad.ufbird.controller;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
+import mvlad.ufbird.model.PlayModel;
+
 public abstract class Controller {
     protected OrthographicCamera cam;
     protected GameControllerManager csm;

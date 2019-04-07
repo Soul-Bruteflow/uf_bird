@@ -9,10 +9,12 @@ import mvlad.ufbird.model.BackgroundModel;
 import mvlad.ufbird.model.BirdModel;
 import mvlad.ufbird.model.GroundModel;
 import mvlad.ufbird.model.PipeModel;
+import mvlad.ufbird.model.PlayModel;
 import mvlad.ufbird.view.BackgroundView;
 import mvlad.ufbird.view.BirdView;
 import mvlad.ufbird.view.GroundView;
 import mvlad.ufbird.view.PipeView;
+import mvlad.ufbird.view.PlayView;
 
 public class PlayController extends Controller {
 
@@ -25,11 +27,13 @@ public class PlayController extends Controller {
     private BackgroundView backgroundView;
     private PipeView pipeView;
     private GroundView groundView;
+    private PlayView playView;
 
     private BackgroundModel backgroundModel;
     private BirdModel birdModel;
     private Array<PipeModel> pipesModel;
     private GroundModel groundModel;
+    private PlayModel playModel;
 
     public  PlayController(GameControllerManager csm) {
         super(csm);
@@ -53,6 +57,9 @@ public class PlayController extends Controller {
                     new Vector2(pipeView.getTopPipeTexture().getWidth(), pipeView.getTopPipeTexture().getHeight())));
         }
 
+        playView = new PlayView();
+        playModel = new PlayModel(new Vector2(120, 350));
+
     }
 
     @Override
@@ -68,6 +75,7 @@ public class PlayController extends Controller {
         handleInput();
         birdModel.updatePos(deltaTime);
         birdView.updateBirdAnimation(deltaTime);
+        playModel.updatePos(deltaTime);
         cam.position.x = birdModel.getPosition().x + 80;
         groundModel.updateGround(cam, groundView.getGroundTexture().getWidth());
         backgroundModel.updateBackground(cam, backgroundView.getBackground().getWidth());
@@ -84,7 +92,8 @@ public class PlayController extends Controller {
             }
 
             if (pipe.crossPipe(birdModel.getBounds())){
-                System.out.println("cross.");
+                playModel.incrementScore();
+                //System.out.println("cross.");
             }
         }
         if(birdModel.getPosition().y <= groundView.getGroundTexture().getHeight() + groundModel.getGroundYOffset())
@@ -103,6 +112,7 @@ public class PlayController extends Controller {
             pipeView.render(sb, pipe.getPosBotPipe(), pipe.getPosTopPipe());
         }
         groundView.render(sb, groundModel.getGroundPos1(), groundModel.getGroundPos2());
+        playView.renderScore(sb, playModel.getCurrentScore(), playModel.getPos());
     }
 
     @Override

@@ -3,10 +3,7 @@ package mvlad.ufbird;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-
-import javax.xml.soap.Text;
 
 import mvlad.ufbird.controller.GameControllerManager;
 import mvlad.ufbird.controller.MainMenuController;
@@ -20,11 +17,11 @@ public class uf_bird extends ApplicationAdapter {
 	private GameControllerManager csm;
 	private SpriteBatch spriteBatch;
 	private MainMusic musicTheme;
-
-	private Texture tmp;
+	public static int[] topScore;
 
 	@Override
 	public void create() {
+		topScore = new int[] { 0, 0, 0, 0, 0 };
 		spriteBatch = new SpriteBatch();
 		csm = new GameControllerManager();
 		musicTheme = new MainMusic();
@@ -42,6 +39,6 @@ public class uf_bird extends ApplicationAdapter {
 	@Override
 	public void dispose() {
 		super.dispose();
-		//music.dispose();
+		musicTheme.dispose();
 	}
 }
