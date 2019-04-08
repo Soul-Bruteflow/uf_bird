@@ -59,10 +59,9 @@ public class GameOverView {
         sb.end();
     }
 
-    public void renderScoreBackground(SpriteBatch sb, Vector2 position){
-        sb.begin();
-        sb.draw(scoreBackground, position.x, position.y);
-        sb.end();
+    public void disposeBackground() {
+        background.dispose();
+        System.out.println("Background disposed.");
     }
 
     public void renderTitle(SpriteBatch sb, Vector2 position){
@@ -71,10 +70,20 @@ public class GameOverView {
         sb.end();
     }
 
+    public void disposeTitle() {
+        title.dispose();
+        System.out.println("Title disposed.");
+    }
+
     public void renderOkBtn(SpriteBatch sb, Vector2 position){
         sb.begin();
         sb.draw(okBtn, position.x, position.y);
         sb.end();
+    }
+
+    public void disposeOkBtn() {
+        okBtn.dispose();
+        System.out.println("OkBtn disposed.");
     }
 
     public void renderScoreBtn(SpriteBatch sb, Vector2 position){
@@ -83,10 +92,19 @@ public class GameOverView {
         sb.end();
     }
 
+    public void disposeScoreBtn() {
+        scoreBtn.dispose();
+        System.out.println("ScoreBtn disposed.");
+    }
+
     public void renderCurScore(SpriteBatch sb, int score, Vector2 pos){
         sb.begin();
         font.draw(sb, "Current Score: " + Integer.toString(score), pos.x, pos.y);
         sb.end();
+    }
+    public void disposeFont() {
+        font.dispose();
+        System.out.println("Font disposed.");
     }
 
     public void renderTopScore(SpriteBatch sb, Vector2 pos){

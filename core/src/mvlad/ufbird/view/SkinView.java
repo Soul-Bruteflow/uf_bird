@@ -44,6 +44,11 @@ public class SkinView {
         sb.end();
     }
 
+    public void disposeFont() {
+        font.dispose();
+        System.out.println("Font disposed.");
+    }
+
     public void renderOkBtn(SpriteBatch sb, Vector2 position){
         sb.begin();
         sb.draw(okBtn, position.x, position.y);
@@ -63,7 +68,7 @@ public class SkinView {
 
     public void disposeSkin1() {
         skin1.dispose();
-        System.out.println("Ok button disposed.");
+        System.out.println("Skin1 disposed.");
     }
 
     public void renderSkin2(SpriteBatch sb, Vector2 position){
@@ -74,7 +79,7 @@ public class SkinView {
 
     public void disposeSkin2() {
         skin2.dispose();
-        System.out.println("Ok button disposed.");
+        System.out.println("Skin2 disposed.");
     }
 
     public void renderSkin3(SpriteBatch sb, Vector2 position){
@@ -85,7 +90,7 @@ public class SkinView {
 
     public void disposeSkin3() {
         skin3.dispose();
-        System.out.println("Ok button disposed.");
+        System.out.println("Skin3 disposed.");
     }
 
     public Texture getSkin1() {

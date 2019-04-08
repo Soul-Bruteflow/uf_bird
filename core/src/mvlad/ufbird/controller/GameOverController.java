@@ -63,10 +63,11 @@ public class GameOverController extends Controller {
 
     @Override
     public void dispose() {
-        //gameOverView.disposeBackground();
-        //gameOverView.disposePlayBtn();
-        //gameOverView.disposeTitle();
-        //gameOverView.disposeFooter();
+        gameOverView.disposeBackground();
+        gameOverView.disposeOkBtn();
+        gameOverView.disposeTitle();
+        gameOverView.disposeFont();
+        gameOverView.disposeScoreBtn();
         System.out.println("Main Menu disposed");
     }
 }

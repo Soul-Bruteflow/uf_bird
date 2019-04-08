@@ -95,10 +95,12 @@ public class SkinController extends Controller {
 
         @Override
         public void dispose() {
-            //gameOverView.disposeBackground();
-            //gameOverView.disposePlayBtn();
-            //gameOverView.disposeTitle();
-            //gameOverView.disposeFooter();
+            skinView.disposeBackground();
+            skinView.disposeOkBtn();
+            skinView.disposeSkin1();
+            skinView.disposeSkin2();
+            skinView.disposeSkin3();
+            skinView.disposeFont();
             System.out.println("Main Menu disposed");
         }
 }
