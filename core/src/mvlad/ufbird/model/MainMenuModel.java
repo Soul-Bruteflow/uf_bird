@@ -22,6 +22,16 @@ public class MainMenuModel extends Model {
         return (ret);
     }
 
+    public Vector2 setSkinBtnPos(OrthographicCamera cam, Texture texture){
+
+        Vector2 ret = new Vector2(0, 0);
+
+        ret.x = cam.position.x - texture.getWidth() / 2.0f;
+        ret.y = cam.position.y - 30;
+
+        return (ret);
+    }
+
     public Vector2 setBackgroundSize(){
 
         Vector2 ret = new Vector2(0, 0);

@@ -47,10 +47,7 @@ public class TopScoreController extends Controller {
     public void render(SpriteBatch sb) {
         sb.setProjectionMatrix(cam.combined);
         gameOverView.renderBackground(sb, gameOverModel.setBackgroundSize());
-        //gameOverView.renderTitle(sb, gameOverModel.setTitlePos(cam, gameOverView.getTitle()));
         gameOverView.renderOkBtn(sb, gameOverModel.setOkBtnPosLong(cam, gameOverView.getOkBtn()));
-        //gameOverView.renderScoreBtn(sb, gameOverModel.setScoreBtnPos(cam, gameOverView.getScoreBtn()));
-        //gameOverView.renderCurScore(sb, uf_bird.currentScore, gameOverModel.setCurScorePos(cam, gameOverView.getFont()));
         gameOverView.renderTopScore(sb, gameOverModel.setTopScorePosLong(cam, gameOverView.getFont()));
         gameOverView.renderTopScoreValueLong(sb, gameOverModel.setTopScoreValuePosLong(cam, gameOverView.getFont()));
     }

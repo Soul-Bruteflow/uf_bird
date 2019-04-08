@@ -20,15 +20,6 @@ public class GameOverModel extends Model {
         return (ret);
     }
 
-    public Vector2 setScoreBackgroundPos(OrthographicCamera cam, Texture texture){
-        Vector2 ret = new Vector2(0, 0);
-
-        ret.x = cam.position.x - texture.getWidth() / 2.0f;
-        ret.y = cam.position.y - 30;
-
-        return (ret);
-    }
-
     public Vector2 setOkBtnPos(OrthographicCamera cam, Texture texture){
         Vector2 ret = new Vector2(0, 0);
 

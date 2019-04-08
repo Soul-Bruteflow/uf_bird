@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import mvlad.ufbird.sprites.AnimationView;
+import mvlad.ufbird.uf_bird;
 
 public class BirdView {
     private Texture bird;
@@ -14,7 +15,13 @@ public class BirdView {
     private Sound wingSound;
 
     public BirdView(){
-        bird = new Texture("sprites/birdAnimation.png");
+        if (uf_bird.skin == 0)
+            bird = new Texture("sprites/birdAnimation1.png");
+        if (uf_bird.skin == 1)
+            bird = new Texture("sprites/birdAnimation2.png");
+        if (uf_bird.skin == 2)
+            bird = new Texture("sprites/birdAnimation3.png");
+
         wingSound = Gdx.audio.newSound(Gdx.files.internal("audio/wing.wav"));
         birdAnimation = new AnimationView(new TextureRegion(bird), 3, 0.5f);
     }
